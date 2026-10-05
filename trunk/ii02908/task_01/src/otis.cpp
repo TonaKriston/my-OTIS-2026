@@ -135,9 +135,9 @@ int main() {
     }
 
     double a, b, c;
-    cout << "Enter linear coefficients:\na: "; cin >> a;
-    cout << "b: "; cin >> b;
-    cout << "c: "; cin >> c;
+    cout << "Enter linear coefficients:\na1: "; cin >> a;
+    cout << "a2: "; cin >> b;
+    cout << "b: "; cin >> c;
 
     LinearModel lin(a, b, c);
     if (!lin.isStable()) {
@@ -159,8 +159,8 @@ int main() {
 
     cout << "All nonlineaar processes have been completed\n\n";
 
-    cout << "Enter differential coefficients:\na: "; cin >> a;
-    cout << "b: "; cin >> b;
+    cout << "Enter differential coefficients:\nb: "; cin >> a;
+    cout << "dt: "; cin >> b;
 
     DifferentialModel dif(a, b);
     runSimulation(&dif, n, 0, "dif_step.csv");

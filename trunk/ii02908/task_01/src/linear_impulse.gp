@@ -10,4 +10,4 @@ set key outside right
 
 set style line 1 linecolor rgb '#0060ad' linetype 1 linewidth 2 pointtype 7 pointsize 1.5
 
-plot 'linear_impulse.csv' using 2:3 with linespoints linestyle 1
+plot 'linear_impulse.csv' using 1:3 with linespoints linestyle 1
