@@ -16,11 +16,11 @@ public:
 class LinearModel : public Model { //1.3 y[tau+1] = a1*y[tau] + a2*y[tau-1] + b*u[tau]
 private:
     double a1, a2, b;
-    double y_prev; // y[tau-1]
-    double y_curr; // y[tau]
+    double y_prev = 0; // y[tau-1]
+    double y_curr = 0; // y[tau]
 
 public:
-    LinearModel(double a1_, double a2_, double b_) : a1(a1_), a2(a2_), b(b_), y_prev(0), y_curr(0) {
+    LinearModel(double a1_, double a2_, double b_) : a1(a1_), a2(a2_), b(b_) {
         //конструктор установки параметров уравнения 
     }
 
@@ -56,10 +56,10 @@ class NonlinearModel : public Model { //2.10 y[tau+1] = a*tanh(y[tau]) + b*u[tau
 private:
     double a;
     double b;
-    double y_curr;
+    double y_curr = 0;
 
 public:
-    NonlinearModel(double a_, double b_) : a(a_), b(b_), y_curr(0) {
+    NonlinearModel(double a_, double b_) : a(a_), b(b_) {
        
     }
 
@@ -79,10 +79,10 @@ class DifferentialModel : public Model { //3.2 dy/dt = b*u
 private:
     double b;
     double dt;
-    double y_curr;
+    double y_curr = 0;
 
 public:
-    DifferentialModel(double b_, double dt_) : b(b_), dt(dt_), y_curr(0) {
+    DifferentialModel(double b_, double dt_) : b(b_), dt(dt_) {
        
     }
 
@@ -106,7 +106,7 @@ double generateSignal(int type, int tau) { //генерация входного
     }
 }
 
-void runSimulation(Model* model, int n, int signalType, string filename) { //запуск модели и вывод результатов
+void runSimulation(Model* model, int n, int signalType, const string& filename) { //запуск модели и вывод результатов
     ofstream fout(filename);
     fout << fixed << setprecision(6); //настройка формата вывода
 
@@ -167,17 +167,17 @@ int main() {
     runSimulation(&dif, n, 2, "dif_harmonic.csv");
 
     //я знаю, что жёсткий путь - это нехорошо, но у меня иначе не запускается :(
-    system("\"C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" linear_step.gp");
-    system("\"C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" linear_impulse.gp");
-    system("\"C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" linear_harmonic.gp");
+    system(R"("C:\Program Files\gnuplot\bin\gnuplot.exe\" linear_step.gp)");
+    system(R"("C:\Program Files\gnuplot\bin\gnuplot.exe\" linear_impulse.gp)");
+    system(R"("C:\Program Files\gnuplot\bin\gnuplot.exe\" linear_harmonic.gp)");
 
-    system("\"C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" nonlinear_step.gp");
-    system("\"C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" nonlinear_impulse.gp");
-    system("\"C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" nonlinear_harmonic.gp");
+    system(R"("C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" nonlinear_step.gp)");
+    system(R"("C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" nonlinear_impulse.gp)");
+    system(R"("C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" nonlinear_harmonic.gp)");
 
-    system("\"C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" dif_step.gp");
-    system("\"C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" dif_impulse.gp");
-    system("\"C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" dif_harmonic.gp");
+    system(R"("C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" dif_step.gp)");
+    system(R"("C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" dif_impulse.gp)");
+    system(R"("C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" dif_harmonic.gp)");
 
     return 0;
 }
