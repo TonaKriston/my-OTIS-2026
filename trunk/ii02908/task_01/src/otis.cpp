@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iomanip>
 #include <cmath>
+#include <cstdlib>
 
 using namespace std;
 
@@ -129,7 +130,7 @@ void runSimulation(Model* model, int n, int signalType, string filename) { //з�
 int main() {
     int n;
 
-    cout << "Enter n: "; cin >> n;
+    cout << "Enter number of inerations: "; cin >> n;
     if (n <= 0) {
         cout << "Wrong value"; exit(1);
     }
@@ -167,6 +168,7 @@ int main() {
     runSimulation(&dif, n, 1, "dif_impulse.csv");
     runSimulation(&dif, n, 2, "dif_harmonic.csv");
 
+    //я знаю, что жёсткий путь - это нехорошо, но у меня иначе не запускается :(
     system("\"C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" linear_step.gp");
     system("\"C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" linear_impulse.gp");
     system("\"C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" linear_harmonic.gp");
