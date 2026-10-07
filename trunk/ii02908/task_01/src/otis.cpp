@@ -15,7 +15,9 @@ public:
 
 class LinearModel : public Model { //1.3 y[tau+1] = a1*y[tau] + a2*y[tau-1] + b*u[tau]
 private:
-    double a1, a2, b;
+    double a1;
+    double a2;
+    double b;
     double y_prev = 0; // y[tau-1]
     double y_curr = 0; // y[tau]
 
