@@ -9,8 +9,8 @@ using namespace std;
 class Model { //абстрактный класс для наследования
 public:
     virtual double step(double u) = 0; //подсчёт "у" на текущем шаге
-
     virtual void reset() = 0; //сброс данных перед новым запуском
+    virtual ~Model() = default;
 };
 
 class LinearModel : public Model { //1.3 y[tau+1] = a1*y[tau] + a2*y[tau-1] + b*u[tau]
@@ -20,9 +20,8 @@ private:
     double y_curr; // y[tau]
 
 public:
-    LinearModel(double a1, double a2, double b) { //конструктор установки параметров уравнения
-        this->a1 = a1; this->a2 = a2; this->b = b;
-        y_prev = 0; y_curr = 0;
+    LinearModel(double a1_, double a2_, double b_) : a1(a1_), a2(a2_), b(b_), y_prev(0), y_curr(0) {
+        //конструктор установки параметров уравнения 
     }
 
     double step(double u) override { //вычисление значения на одном шаге
@@ -32,7 +31,7 @@ public:
         return y_curr;
     }
 
-    void reset() {
+    void reset() override {
         y_prev = 0;
         y_curr = 0;
     }
@@ -40,7 +39,7 @@ public:
     //уравнение 1.3 y[tau+1] = a1*y[tau] + a2*y[tau-1] + b*u[tau] приводим к характеристическому (y[tau] = z^tau) виду:
     //получаем z^2 - a1*z - a2 = 0
     //находим корни и выясняем, что система устойчива, если |z1| < 1 и |z2| < 1
-    bool isStable() { //проверка коэффициентов на устойчивость
+    bool isStable() const { //проверка коэффициентов на устойчивость
         double disc = a1 * a1 + 4 * a2; //дискриминант
         if (disc >= 0) { //елси дискриминант больше нуля, то корни вещественные
             double z1 = (a1 + sqrt(disc)) / 2;
@@ -55,14 +54,13 @@ public:
 
 class NonlinearModel : public Model { //2.10 y[tau+1] = a*tanh(y[tau]) + b*u[tau]^3
 private:
-    double a, b;
+    double a;
+    double b;
     double y_curr;
 
 public:
-    NonlinearModel(double a, double b) {
-        this->a = a;
-        this->b = b;
-        y_curr = 0;
+    NonlinearModel(double a_, double b_) : a(a_), b(b_), y_curr(0) {
+       
     }
 
     double step(double u) override {
@@ -70,7 +68,7 @@ public:
         return y_curr;
     }
 
-    void reset() {
+    void reset() override {
         y_curr = 0;
     }
 
@@ -84,10 +82,8 @@ private:
     double y_curr;
 
 public:
-    DifferentialModel(double b, double dt) {
-        this->b = b;
-        this->dt = dt;
-        y_curr = 0;
+    DifferentialModel(double b_, double dt_) : b(b_), dt(dt_), y_curr(0) {
+       
     }
 
     double step(double u) override {
@@ -95,7 +91,7 @@ public:
         return y_curr;
     }
 
-    void reset() {
+    void reset() override {
         y_curr = 0;
     }
 
@@ -135,7 +131,9 @@ int main() {
         cout << "Wrong value"; exit(1);
     }
 
-    double a, b, c;
+    double a;
+    double b;
+    double c;
     cout << "Enter linear coefficients:\na1: "; cin >> a;
     cout << "a2: "; cin >> b;
     cout << "b: "; cin >> c;
