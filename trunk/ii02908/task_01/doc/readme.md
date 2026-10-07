@@ -43,8 +43,11 @@
 Вариант 27
 
 линейная модель 1.3 y[tau+1] = a1*y[tau] + a2*y[tau-1] + b*u[tau]
+
 нелинейная модель 2.10 y[tau+1] = a*tanh(y[tau]) + b*u[tau]^3
+
 дифференциальная модель 3.2 dy/dt = b*u
+
 
 Для выполнения задания мною были использованы навыки ООП. Создан абстрактный базовый класс Model с виртуальным методом step,
 который запускает итерационный процесс подсчёта уравнений.
@@ -57,10 +60,12 @@
 .exe из каталога build будет работать некорректно, в виду расположения необходимых для построения графиков .gp файлов).
 ----------------------------------------------------------
 Демонстрация сборки:
-<img width="1450" height="514" alt="image" src="https://github.com/user-attachments/assets/6b846775-89a4-4cff-9318-8e748f98858b" />
+<img width="1459" height="703" alt="image" src="https://github.com/user-attachments/assets/344c31a0-1c73-4d51-b734-fedabaeb55b3" />
+
 
 Демонстрация работы программы:
-<img width="1190" height="406" alt="PERFORM-OTIS1" src="https://github.com/user-attachments/assets/17fc9ee2-f728-48be-854a-2c6cccbaa820" />
+<img width="929" height="423" alt="image" src="https://github.com/user-attachments/assets/289b2ec9-9b94-44fd-bf1d-9d50aa55bd37" />
+
 
 
 Пример содержания готового .csv файла:
@@ -70,7 +75,10 @@
 
 
 Пример готовых графиков:
-<img width="1000" height="700" alt="plot_dif_harmonic" src="https://github.com/user-attachments/assets/1790dfa0-de14-4ab6-bb64-cf77cc33d80c" />
-<img width="1000" height="700" alt="plot_nonlinear_impulse" src="https://github.com/user-attachments/assets/a13deb08-c298-46b8-9bc3-acb66dcb8970" />
+<img width="1000" height="700" alt="plot_dif_harmonic" src="https://github.com/user-attachments/assets/047f3c69-588c-4f0b-9256-8ab32272f961" />
+<img width="1000" height="700" alt="plot_nonlinear_impulse" src="https://github.com/user-attachments/assets/4a48f912-9a7f-4f3e-8bbb-24670636ec24" />
+<img width="1000" height="700" alt="plot_dif_step" src="https://github.com/user-attachments/assets/469e6ba0-5e8c-4d86-8fc1-81d7d8074c09" />
+
+
 
 
