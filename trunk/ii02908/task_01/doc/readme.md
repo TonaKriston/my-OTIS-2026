@@ -80,5 +80,11 @@
 <img width="1000" height="700" alt="plot_dif_step" src="https://github.com/user-attachments/assets/469e6ba0-5e8c-4d86-8fc1-81d7d8074c09" />
 
 
+Отзывы на чужие работы:
+<img width="1403" height="691" alt="image" src="https://github.com/user-attachments/assets/7cde472f-0e26-4be5-aaca-a4274d0676bd" />
+
+<img width="1421" height="454" alt="image" src="https://github.com/user-attachments/assets/7b7f0c4d-e4b6-4d87-b92b-5b5ab572837f" />
+
+<img width="1332" height="823" alt="image" src="https://github.com/user-attachments/assets/d1fc0e30-a521-430d-b2aa-efc0cd05acb4" />
 
 
