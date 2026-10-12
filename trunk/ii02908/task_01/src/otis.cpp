@@ -168,18 +168,31 @@ int main() {
     runSimulation(&dif, n, 1, "dif_impulse.csv");
     runSimulation(&dif, n, 2, "dif_harmonic.csv");
 
-    //я знаю, что жёсткий путь - это нехорошо, но у меня иначе не запускается :(
+    //я знаю, что жёсткий путь - это нехорошо, но у меня иначе не запускается gnuplot :(
     system(R"("C:\Program Files\gnuplot\bin\gnuplot.exe\" linear_step.gp)");
     system(R"("C:\Program Files\gnuplot\bin\gnuplot.exe\" linear_impulse.gp)");
     system(R"("C:\Program Files\gnuplot\bin\gnuplot.exe\" linear_harmonic.gp)");
 
-    system(R"("C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" nonlinear_step.gp)");
-    system(R"("C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" nonlinear_impulse.gp)");
-    system(R"("C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" nonlinear_harmonic.gp)");
+    system(R"("C:\Program Files\gnuplot\bin\gnuplot.exe\" nonlinear_step.gp)");
+    system(R"("C:\Program Files\gnuplot\bin\gnuplot.exe\" nonlinear_impulse.gp)");
+    system(R"("C:\Program Files\gnuplot\bin\gnuplot.exe\" nonlinear_harmonic.gp)");
 
-    system(R"("C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" dif_step.gp)");
-    system(R"("C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" dif_impulse.gp)");
-    system(R"("C:\\Program Files\\gnuplot\\bin\\gnuplot.exe\" dif_harmonic.gp)");
+    system(R"("C:\Program Files\gnuplot\bin\gnuplot.exe\" dif_step.gp)");
+    system(R"("C:\Program Files\gnuplot\bin\gnuplot.exe\" dif_impulse.gp)");
+    system(R"("C:\Program Files\gnuplot\bin\gnuplot.exe\" dif_harmonic.gp)");
+
+    //открытие графиков
+    system("plot_linear_step.png");
+    system("plot_linear_impulse.png");
+    system("plot_linear_harmonic.png");
+
+    system("plot_nonlinear_step.png");
+    system("plot_nonlinear_impulse.png");
+    system("plot_nonlinear_harmonic.png");
+
+    system("plot_dif_step.png");
+    system("plot_dif_impulse.png");
+    system("plot_dif_harmonic.png");
 
     return 0;
 }
