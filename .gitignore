@@ -1,0 +1,45 @@
+# --- C++ build artifacts ---
+build/
+out/
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.dll
+
+# --- CMake ---
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# --- Visual Studio ---
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# --- IDE / editors ---
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- OS ---
+Thumbs.db
+.DS_Store
+
+# --- Local simulation results (optional) ---
+# Uncomment if you don't want to commit your simulation data
+# result.csv
+# Local simulation output (используем doc/example_output.csv для примера)
+trunk/ii02909/task_01/result.csv
