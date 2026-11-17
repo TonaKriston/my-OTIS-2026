@@ -16,16 +16,18 @@ public:
     MOCK_METHOD(void,   reset, (),         (override));
 };
 
-// -------- Проверка контракта runSimulation --------
+// -------- Проверка runSimulation --------
+//Проверка того, что reset() будет вызван ровно один раз, а step() - N(5) раз
 TEST(RunSimulationTest, CallsResetAndStepsNTimes) {
     MockModel mock;
 
     EXPECT_CALL(mock, reset()).Times(1);
     EXPECT_CALL(mock, step(_)).Times(5).WillRepeatedly(Return(0.0));
 
-    runSimulation(&mock, 5, /*signal=*/0, "mock_out.csv");
+    runSimulation(&mock, 5, /*signal type=*/0, "mock_out.csv");
 }
 
+//Проверка правильности посылаемых ступенчатых сигналов
 TEST(RunSimulationTest, PassesCorrectSignalsToStep) {
     MockModel mock;
 
@@ -37,21 +39,24 @@ TEST(RunSimulationTest, PassesCorrectSignalsToStep) {
     EXPECT_CALL(mock, step(2.0));
     EXPECT_CALL(mock, step(3.0));
 
-    runSimulation(&mock, 4, /*signal=*/0, "mock_out2.csv");
+    runSimulation(&mock, 4, /*signal type=*/0, "mock_out2.csv");
 }
 
+//Проверка правильности посылаемых импульсных сигналов
 TEST(RunSimulationTest, PassesImpulseSignalCorrectly) {
     MockModel mock;
 
     InSequence seq;
     EXPECT_CALL(mock, reset());
-    EXPECT_CALL(mock, step(1.0)); // tau=0
-    EXPECT_CALL(mock, step(0.0));
-    EXPECT_CALL(mock, step(0.0));
+    EXPECT_CALL(mock, step(1.0)); //tau=0
+    EXPECT_CALL(mock, step(0.0)); //tau=1
+    EXPECT_CALL(mock, step(0.0)); //tau=2
 
-    runSimulation(&mock, 3, /*signal=*/1, "mock_out3.csv");
+    runSimulation(&mock, 3, /*signal ензу=*/1, "mock_out3.csv");
 }
 
+//Проверка корректности создаваемого .csv файла
+//(создаётся ли файл, открывается ли он, пишется ли туда информация, сколько строк и столбцов)
 TEST(RunSimulationTest, WritesCsvFile) {
     MockModel mock;
     EXPECT_CALL(mock, reset());
