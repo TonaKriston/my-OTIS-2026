@@ -21,7 +21,7 @@ endif()
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/refs/tags/v1.18.0.zip
+  URL https://github.com/google/googletest/archive/refs/tags/v1.15.2.zip
 )
 # Для Windows: предотвращает переопределение настроек компилятора родительского проекта
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
