@@ -1,4 +1,4 @@
-set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING "" FORCE)
 
 cmake_minimum_required(VERSION 3.20)
 project(task_02_tests CXX)
@@ -25,6 +25,7 @@ FetchContent_Declare(
 )
 # Для Windows: предотвращает переопределение настроек компилятора родительского проекта
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 # ---- Исходники проекта ----
