@@ -1,5 +1,3 @@
-set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING "" FORCE)
-
 cmake_minimum_required(VERSION 3.20)
 project(task_02_tests CXX)
 
@@ -19,14 +17,15 @@ endif()
 
 # ---- GoogleTest ----
 include(FetchContent)
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/refs/tags/v1.15.2.zip
-)
-# Для Windows: предотвращает переопределение настроек компилятора родительского проекта
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING "" FORCE)
-FetchContent_MakeAvailable(googletest)
+    FetchContent_Declare(
+        googletest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG v1.15.2
+        GIT_SHALLOW TRUE
+    )
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(googletest)
 
 # ---- Исходники проекта ----
 set(SRC_DIR  "${CMAKE_CURRENT_SOURCE_DIR}/src")
