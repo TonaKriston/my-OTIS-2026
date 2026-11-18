@@ -1,0 +1,55 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+title Lab 1 / Variant 12 - Model Classes
+
+abstract class Model {
+  +id(): string
+  +title(): string
+  +nextStep(state: SimulationState): double
+}
+class DelayedLinearModel {
+  -a_: double
+  -b_: double
+  -delay_: size_t
+  +nextStep(state): double
+}
+class PolynomialNonlinearModel {
+  -a1_: double
+  -a2_: double
+  -b_: double
+  +nextStep(state): double
+}
+class OffsetEulerModel {
+  -a_: double
+  -b_: double
+  +nextStep(state): double
+}
+class SimulationState {
+  +step: size_t
+  +y: double
+  +yPrevious: double
+  +u: double
+  +inputs: vector<double>
+  +dt: double
+}
+enum InputType {
+  Step
+  Impulse
+  Harmonic
+}
+class Row {
+  +tau: size_t
+  +input: double
+  +yCurrent: double
+  +yNext: double
+}
+
+Model <|-- DelayedLinearModel
+Model <|-- PolynomialNonlinearModel
+Model <|-- OffsetEulerModel
+Model ..> SimulationState : nextStep()
+note bottom of Model
+  Used by simulate(model, InputType, n, dt)
+end note
+@enduml

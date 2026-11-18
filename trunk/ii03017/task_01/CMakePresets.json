@@ -1,0 +1,21 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "gcc",
+      "displayName": "GCC (C:\\Users\\user\\gcc)",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "C:/Users/user/gcc/bin/g++.exe",
+        "CMAKE_MAKE_PROGRAM": "C:/Users/user/gcc/bin/make.exe"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "gcc",
+      "configurePreset": "gcc"
+    }
+  ]
+}

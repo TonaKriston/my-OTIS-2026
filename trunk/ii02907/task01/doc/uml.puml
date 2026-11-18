@@ -1,0 +1,23 @@
+@startuml
+abstract class Model {
+  +name(): string
+  +calculateNext(u, step, history, dt): double
+}
+class Model15 {
+  -a1: double
+  -a2: double
+  -b: double
+  -delay: int
+}
+class Model27 {
+  -a: double
+  -b: double
+  -epsilon: double
+}
+class Model39 {
+  -b: double
+}
+Model <|-- Model15
+Model <|-- Model27
+Model <|-- Model39
+@enduml

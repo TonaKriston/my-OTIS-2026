@@ -1,0 +1,20 @@
+PROJECT_NAME      = "OTIS-2026 task_03 - PID controller"
+PROJECT_BRIEF     = "PID regulation of plant models 1.8 / 2.2 / 3.6 (ii03022)"
+
+OUTPUT_DIRECTORY  = task_03/doc
+HTML_OUTPUT       = html
+
+# модели документируются из их единственных мест: task_01 и task_02 (без копий);
+# doxygen не переваривает ../.. в INPUT, поэтому запускаем его из ii03022
+INPUT             = task_03/src \
+                    task_01/src \
+                    task_02/src
+FILE_PATTERNS     = *.h *.cpp
+RECURSIVE         = YES
+EXCLUDE           = task_01/src/main.cpp \
+                    "task_01/src/Model 3.6.h"
+
+GENERATE_HTML     = YES
+GENERATE_LATEX    = NO
+EXTRACT_ALL       = YES
+QUIET             = YES

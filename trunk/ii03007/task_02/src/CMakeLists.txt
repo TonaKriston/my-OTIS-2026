@@ -1,0 +1,2 @@
+add_library(task2_ii03007_headers INTERFACE)
+target_include_directories(task2_ii03007_headers INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})

@@ -6,9 +6,12 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+
+// windows.h нужен только для переключения консоли в UTF-8; на Linux (CI) его нет.
 #ifdef _WIN32
 #include <windows.h>
 #endif
+
 
 #include "InputSignal.h"
 #include "Model.h"
@@ -150,10 +153,11 @@ static void printTable(const std::vector<Row>& rows)
 
 int main()
 {   
-    #ifdef _WIN32
+#ifdef _WIN32
     SetConsoleCP(65001);
     SetConsoleOutputCP(65001);
-    #endif
+#endif
+
     std::cout << "============================================\n";
     std::cout << " OTIS-2026 | Лабораторная работа №1\n";
     std::cout << " Вариант 3\n";
@@ -195,9 +199,13 @@ int main()
     printTable(rows);
     saveCsv(rows);
 
+#ifdef _WIN32
     system("python plot.py");
 
     system("pause");
+#else
+    system("python3 plot.py");
+#endif
 
     return 0;
 }

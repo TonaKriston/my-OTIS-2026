@@ -1,0 +1,22 @@
+# CMake
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Результаты моделирования
+*.csv
+*.png
+!doc/**
+
+# Executable files
+*.exe
+
+# IDE / editor
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log

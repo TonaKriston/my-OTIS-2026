@@ -1,0 +1,18 @@
+digraph UML {
+ graph [rankdir=TB, bgcolor="white", pad="0.25", nodesep="0.4", ranksep="0.85", fontname="Arial", label="Lab 1 - Variant 12 | UML Class Diagram", labelloc=t, fontsize=20];
+ node [shape=record, style="rounded,filled", fillcolor="#F2F6FD", color="#4B6487", penwidth=1.2, fontname="Arial", fontsize=12, margin="0.16,0.10"];
+ edge [fontname="Arial", fontsize=10, color="#4B6487", arrowsize=0.8];
+ Model [label="{«abstract» Model|+ id(): string\\l+ title(): string\\l+ nextStep(state): double\\l}", fillcolor="#E0EDFE"];
+ DelayedLinearModel [label="{DelayedLinearModel (1.2)|- a_: double\\l- b_: double\\l- delay_: size_t\\l|+ nextStep(state): double\\l}"];
+ PolynomialNonlinearModel [label="{PolynomialNonlinearModel (2.6)|- a1_: double\\l- a2_: double\\l- b_: double\\l|+ nextStep(state): double\\l}"];
+ OffsetEulerModel [label="{OffsetEulerModel (3.10)|- a_: double\\l- b_: double\\l|+ nextStep(state): double\\l}"];
+ SimulationState [label="{SimulationState|+ step: size_t\\l+ y: double\\l+ yPrevious: double\\l+ u: double\\l+ inputs: vector\\l+ dt: double\\l}", fillcolor="#E7F5EB"];
+ InputType [label="{«enum» InputType|Step\\lImpulse\\lHarmonic\\l}", fillcolor="#FCF2E1"];
+ Row [label="{Row|+ tau: size_t\\l+ input: double\\l+ yCurrent: double\\l+ yNext: double\\l}", fillcolor="#FCF2E1"];
+ {rank=same; DelayedLinearModel; PolynomialNonlinearModel; OffsetEulerModel}
+ DelayedLinearModel -> Model [arrowhead=empty];
+ PolynomialNonlinearModel -> Model [arrowhead=empty];
+ OffsetEulerModel -> Model [arrowhead=empty];
+ Model -> SimulationState [style=dashed, label="nextStep(state)"];
+ {rank=same; SimulationState; Row; InputType}
+}
