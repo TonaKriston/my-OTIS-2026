@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 project(task_02_tests CXX)
 set(ENV{CMAKE_POLICY_VERSION_MINIMUM} 3.5)
 
