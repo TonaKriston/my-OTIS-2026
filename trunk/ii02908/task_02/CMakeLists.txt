@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 4.4)
 project(task_02_tests CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 # Принудительная генерация PDB-файлов для всех конфигураций (включая Release)
 # эти файлы нужны для анализа покрытия
